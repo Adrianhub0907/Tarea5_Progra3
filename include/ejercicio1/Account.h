@@ -1,8 +1,22 @@
-//
-// Created by AdrianCespedes on 24/10/2026.
-//
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
 
-#ifndef TAREA5_PROGRA3_ACCOUNT_H
-#define TAREA5_PROGRA3_ACCOUNT_H
+#include <string>
+#include <mutex>
 
-#endif //TAREA5_PROGRA3_ACCOUNT_H
+class Account {
+private:
+    std::string id;
+    double balance;
+    mutable std::mutex mtx;
+
+public:
+    Account(const std::string& id, double initial_balance);
+
+    void deposit(double amount);
+    void withdraw(double amount);
+    double getBalance() const;
+    std::string getId() const;
+};
+
+#endif
