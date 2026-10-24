@@ -3,6 +3,7 @@
 
 #include <string>
 #include <mutex>
+using namespace std;
 
 class Account {
 private:
@@ -16,7 +17,7 @@ public:
     void deposit(double amount);
     void withdraw(double amount);
     double getBalance() const;
-    std::string getId() const;
+    string getId() const;
 };
 
 #endif

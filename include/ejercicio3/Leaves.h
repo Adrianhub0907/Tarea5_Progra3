@@ -2,6 +2,7 @@
 #define LEAVES_H
 
 #include "ejercicio3/Expression.h"
+using namespace std;
 
 class Constant : public Expression {
 private:
@@ -14,15 +15,15 @@ public:
         return value;
     }
 
-    std::shared_ptr<Expression> derivative() const override {
-        return std::make_shared<Constant>(0);
+    shared_ptr<Expression> derivative() const override {
+        return make_shared<Constant>(0);
     }
 
-    std::string toString() const override {
+    string toString() const override {
         if (value == static_cast<int>(value)) {
-            return std::to_string(static_cast<int>(value));
+            return to_string(static_cast<int>(value));
         }
-        return std::to_string(value);
+        return to_string(value);
     }
 };
 
@@ -34,11 +35,11 @@ public:
         return x;
     }
 
-    std::shared_ptr<Expression> derivative() const override {
-        return std::make_shared<Constant>(1);
+    shared_ptr<Expression> derivative() const override {
+        return make_shared<Constant>(1);
     }
 
-    std::string toString() const override {
+    string toString() const override {
         return "x";
     }
 };

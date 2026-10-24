@@ -6,12 +6,14 @@
 #include "ejercicio3/Expression.h"
 #include "ejercicio3/Leaves.h"
 #include "ejercicio3/Operations.h"
+using namespace std;
+
 
 int main() {
-    std::cout << " EJERCICIO 1 (SINGLETON) " << std::endl;
+    cout << " EJERCICIO 1 (SINGLETON) " << endl;
     auto& manager = TransactionManager::getInstance();
     Account account("A1", 1000);
-    std::vector<std::thread> threads;
+    vector<std::thread> threads;
 
     for (int i = 0; i < 10; ++i) {
         threads.emplace_back([&]() {
@@ -22,25 +24,25 @@ int main() {
 
     for (auto& t : threads) t.join();
 
-    std::cout << "Balance final: " << account.getBalance() << std::endl;
-    std::cout << "Direccion manager: " << &TransactionManager::getInstance() << std::endl;
+    cout << "Balance final: " << account.getBalance() << endl;
+    cout << "Direccion manager: " << &TransactionManager::getInstance() << endl;
 
-    std::cout << " EJERCICIO 3 (COMPOSITE) " << std::endl;
-    auto x = std::make_shared<Variable>();
+    cout << " EJERCICIO 3 (COMPOSITE) " << endl;
+    auto x = make_shared<Variable>();
 
-    auto expr = std::make_shared<Multiply>(
-        std::make_shared<Add>(
-            std::make_shared<Power>(x, std::make_shared<Constant>(2)),
-            std::make_shared<Multiply>(std::make_shared<Constant>(3), x)
+    auto expr = make_shared<Multiply>(
+        make_shared<Add>(
+            make_shared<Power>(x, make_shared<Constant>(2)),
+            make_shared<Multiply>(make_shared<Constant>(3), x)
         ),
-        std::make_shared<Sin>(x)
+        make_shared<Sin>(x)
     );
 
     auto deriv = expr->derivative();
 
-    std::cout << "f(x) = " << expr->toString() << std::endl;
-    std::cout << "f'(x) = " << deriv->toString() << std::endl;
-    std::cout << "f(2) = " << expr->evaluate(2) << std::endl;
+    cout << "f(x) = " << expr->toString() << endl;
+    cout << "f'(x) = " << deriv->toString() << endl;
+    cout << "f(2) = " << expr->evaluate(2) << endl;
 
     return 0;
 }

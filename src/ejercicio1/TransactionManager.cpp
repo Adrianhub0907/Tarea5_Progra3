@@ -13,7 +13,7 @@ void Transaction::executeWithdraw(Account* account, double amount) {
 }
 
 TransactionManager& TransactionManager::getInstance() {
-    static TransactionManager instance; // Se inicializa solo una vez de forma thread-safe (C++11 en adelante)
+    static TransactionManager instance;
     return instance;
 }
 
