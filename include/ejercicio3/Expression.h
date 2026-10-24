@@ -1,8 +1,16 @@
-//
-// Created by AdrianCespedes on 24/10/2026.
-//
+#ifndef EXPRESSION_H
+#define EXPRESSION_H
 
-#ifndef TAREA5_PROGRA3_EXPRESSION_H
-#define TAREA5_PROGRA3_EXPRESSION_H
+#include <memory>
+#include <string>
+using namespace std;
 
-#endif //TAREA5_PROGRA3_EXPRESSION_H
+class Expression {
+public:
+    virtual ~Expression() = default;
+    virtual double evaluate(double x) const = 0;
+    virtual shared_ptr<Expression> derivative() const = 0;
+    virtual string toString() const = 0;
+};
+
+#endif
