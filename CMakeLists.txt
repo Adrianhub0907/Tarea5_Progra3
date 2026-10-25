@@ -9,9 +9,9 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 add_executable(Tarea5_Progra3 main.cpp ${SOURCES}
         include/ejercicio2/RenderFactory.h
-        src/ejercicio2/RenderFactory.cpp
-        src/ejercicio2/Elementos.cpp
-        include/ejercicio2/Elementos.h)
+        include/ejercicio2/Elementos.h
+        include/ejercicio4/Graph.h
+        include/ejercicio4/Iterators.h)
 
 find_package(Threads REQUIRED)
 target_link_libraries(Tarea5_Progra3 PRIVATE Threads::Threads)

@@ -8,6 +8,8 @@
 #include "ejercicio3/Expression.h"
 #include "ejercicio3/Leaves.h"
 #include "ejercicio3/Operations.h"
+#include "ejercicio4/Graph.h"
+#include "ejercicio4/Iterators.h"
 using namespace std;
 
 
@@ -63,5 +65,21 @@ int main() {
     cout << "f'(x) = " << deriv->toString() << endl;
     cout << "f(2) = " << expr->evaluate(2) << endl;
 
+    cout << " Ejercicio 4 (Iterator) " << endl;
+    Graph g;
+    g.addEdge(1,2);
+    g.addEdge(1,3);
+    g.addEdge(2,4);
+    std::unique_ptr<GraphIterator> it =
+    std::make_unique<BFSIterator>(g, 1);
+    while(it->hasNext()) {
+        std::cout << it->next() << " ";
+    }
+    std::cout << endl;
+    std::unique_ptr<GraphIterator> it2 =
+    std::make_unique<DFSIterator>(g, 1);
+    while(it2->hasNext()) {
+        std::cout << it2->next() << " ";
+    }
     return 0;
 }
